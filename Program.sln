@@ -1,0 +1,362 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PracticeCSharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //HelloWorld();
+            //AskAndPrintName();
+            //OddOrEven();
+            //PrimeOrNot();
+            PrintAgeStatus();
+            //PrintSumToN();
+            //PrintProdToN();
+            //PrintSumOrProd();
+            //TableUpTo12();
+            //GuessNumGame();
+            //Next20LeapYear();
+            //Fibonacci1000();
+            //StringArray();
+            //StringList();
+            //Allprimes();
+            // re run function code 
+            while (true)
+            {
+                Console.WriteLine("do you want to run the function again : 'yes' or 'no'");
+                string runagain = Console.ReadLine();
+                if (runagain == "yes")
+                {
+                    PrintAgeStatus(); 
+
+                }
+                else
+                {
+                    
+                    break;
+                }
+            }
+
+
+        }
+        // method to print "hello world"
+        public static void HelloWorld()
+        {
+            Console.WriteLine("Hello World");
+
+        }
+        // method to take name input and print 
+        public static void AskAndPrintName()
+        {
+            Console.WriteLine("Please Enter Your Name");
+            string name = Console.ReadLine();
+            Console.WriteLine("hello " + name);
+        }
+        // method to print the give number if it is odd or even
+        public static void OddOrEven()
+        {
+            Console.WriteLine("Please Enter Any Number");
+            int num = int.Parse(Console.ReadLine());
+            if (num == 0 || num%2 == 0 )
+            {
+                Console.WriteLine("The Number You Entered is Even , that is : " +num);
+            }
+            else
+            {
+                Console.WriteLine("Number You Entered is Odd , that is : " + num);
+
+            }
+        }
+        // method to print the given number is prime or not 
+        public static void PrimeOrNot()
+        {
+            Console.WriteLine("Please Enter Any Number to see if it is prime or not ");
+            int pnum = int.Parse(Console.ReadLine());
+            if(pnum == 2 )
+             {
+                   Console.WriteLine(pnum+"the number u entered is prime");
+
+             }
+            else if(pnum == 0 || pnum == 1 )
+             {
+                 Console.WriteLine(pnum+"the number u entered is not a prime ");
+             }
+            else
+             {
+                int temp = 0;
+                for(int i=2;i<=pnum;i++)
+                {
+                    
+                    if (pnum % i == 0)
+                    {
+                        temp++;
+                    }
+                }
+
+                if(temp == 1)
+                {
+                    Console.WriteLine(pnum +"the number u entered is a prime* ");
+
+                }
+                else
+                {
+                    Console.WriteLine(pnum + "the number u entered is not a prime* ");
+                }
+            }
+
+        }
+        //conditional statements
+        public static void PrintAgeStatus()
+        {
+            Console.WriteLine("Please Enter the Age you looking for");
+            string exmp = Console.ReadLine();
+            int age = int.Parse(exmp);
+            if(age<=4 && age >= 0)
+            {
+                Console.WriteLine("no school");
+            }
+            else if (age <= 10 && age >= 5)
+            {
+                Console.WriteLine("Primary school");
+            }
+            else if (age <= 13 && age >= 11)
+            {
+                Console.WriteLine("Middle school");
+            }
+            else if (age <= 17 && age >= 14)
+            {
+                Console.WriteLine("High school");
+            }
+            else if ( age >= 18 && age <= 100)
+            {
+                Console.WriteLine("college");
+            }
+            else
+            {
+                Console.WriteLine("Invalid Age ");
+            }
+        }
+        //loops statements
+        public static void PrintSumToN()
+        {
+            Console.WriteLine("Please Enter max limit  N to sum from 1");
+            int n = int.Parse(Console.ReadLine());
+            int sum = 0;
+
+            for (int i = 1;i<=n;i++)
+            {
+                if (n == 17)
+                {
+                    if(i % 3 == 0 || i % 5 == 0)
+                    {
+                        sum = sum + i;
+                    }
+                }
+                else
+                {
+                    sum = sum + i;
+                }
+            }
+            Console.WriteLine("sum from 1 to " + n + " is : " + sum);
+        }
+        public static void PrintProdToN()
+        {
+            Console.WriteLine("Please Enter max limit  N to Prod from 1");
+            int n = int.Parse(Console.ReadLine());
+            int prod = 1;
+            for (int i = 1; i <= n; i++)
+            {
+                    prod = prod * i;                
+            }
+            Console.WriteLine("Prod from 1 to " + n + " is : " + prod);
+        }
+        //print prod or sum 
+        public static void PrintSumOrProd()
+        {
+            Console.WriteLine("enter your choice : 'prod' or 'sum'");
+            string printChoice = Console.ReadLine();
+            switch (printChoice)
+            {
+
+                case "sum": PrintSumToN();
+                    break;
+                case "prod": PrintProdToN();
+                    break;
+
+            }    
+    
+        }
+        //table up to 12
+        public static void TableUpTo12()
+        {
+            Console.WriteLine("Please Enter  N  to get the mul table");
+            int n = int.Parse(Console.ReadLine());
+         
+
+            for (int i=1;i<=n;i++)
+            {
+                for(int j=1;j<=10;j++)
+                {
+                    int prod = i * j;
+                    Console.WriteLine(i+" * "+j+" = "+prod );
+
+                }
+                Console.WriteLine("\n");
+            }
+
+        }
+        //guess number game
+        public static void GuessNumGame()
+        {
+            Random randNum = new Random();
+            int guessNum = randNum.Next(1, 20);
+
+            Console.WriteLine("try to guess the number we have made up between 1 and  20 and u will have 3 chances ");
+           
+            int chances = 0;
+            int j = 0;
+            int[] userInputs = new int[100];
+            while (true)
+            { 
+                int userNum = int.Parse(Console.ReadLine());
+                userInputs[j] = userNum;
+                int temp = 0;
+                if (chances > 0)
+                {
+                    for (int i = 0; i < j; i++)
+                    {
+                        if (userInputs[i] == userNum)
+                        {
+                            temp++;
+                        }
+                    }
+                }
+                if (temp >= 1)
+                {          }
+                else
+                {chances++;}
+                j++;
+                if (guessNum == userNum && chances< 3)
+                {
+                    Console.WriteLine("congratiations you guessed right number in " + chances + "chances : " + guessNum);
+                    break;
+                }
+                else if (userNum > guessNum && chances < 3)
+                {
+                    Console.WriteLine("You are close but your number is larger than the guess num , you have used " + chances + "chances : ");
+                   
+                }
+                else if (userNum < guessNum && chances < 3)
+                {
+                    Console.WriteLine("You are close but your number is smaller than the guess num , you have used " + chances + "chances : ");
+                    
+                }
+                else
+                {
+                    Console.WriteLine("sorry you lost the game" +"\n" +"and have no chances left" +"\n"+ "and the answer is " +guessNum);
+                    break;
+                }
+            }
+        }
+        //next 20 leap years
+        public static void Next20LeapYear()
+        {
+            int thisyear = 2017;
+            int count = 0;
+            while(count <= 20 )
+            {
+               
+                if(thisyear%4 ==0)
+                {
+                    count++;
+                    Console.WriteLine("this is a feature leap year" + thisyear);
+                }
+                thisyear++;
+            }
+
+        }
+        //fibonacci1000
+        public static void Fibonacci1000()
+        {
+
+            int temp = 1;
+            int temp1 = 0;
+            int fib = 0;
+            Console.WriteLine(+temp1+"\n"+temp);
+            while (true)
+            {
+                fib = temp + temp1;
+                temp1 = temp;
+                temp = fib;
+                if (fib <= 1000)
+                {
+                    Console.WriteLine(+fib);
+
+                }
+                else
+                {
+                    Console.WriteLine("end of fib series under 1000");
+                    break;
+
+                }
+            }
+        }
+        //sstraing array names and display them
+        public static void StringArray()
+        {
+            string[] names = new string[5] {"kranthi", "jaya", "rohit", "sasi", "vishnu" };
+            for(int i=0;i<=4;i++)
+            {
+                Console.WriteLine("this name is in the string array " + names[i]);
+            }
+
+
+        }
+        //string list and display them 
+        public static void StringList()
+        {
+            List<string> names = new List<string>();
+            names.Add("kranthi");
+            names.Add("jaya");
+            names.Add("rohit");
+            names.Add("sasi");
+            names.Add("vishnu");
+            names.Add("pavan");
+            for(int i= 0; i < names.Count;i++ )
+            {
+                Console.WriteLine("this name is in the list* " +names[i] );
+
+            }
+        }
+        //all primes concept  
+        public static void Allprimes()
+        {
+            Console.WriteLine("Please Enter  N  to get the all the primes");
+            int n = int.Parse(Console.ReadLine()); 
+            for (int j = 2; j <= n; j++)
+            {
+                int temp = 0;
+                for (int i = 2; i < j; i++)
+                {
+                    if (j % i == 0)
+                    {
+                        temp++;
+                    }
+                }
+                if (temp == 0)
+                {
+                    Console.WriteLine(j+ " is a prime* ");
+
+                }
+            }
+
+        }
+
+         
+    }
+}
